@@ -1,0 +1,24 @@
+
+<table class="table table-striped table-hover table-sm">
+    {{#each jornales}}
+    {{#if @first}}
+    <thead>
+        <tr>
+            {{#each this}}
+            <th>{{@key}}</th>
+            {{/each}}
+        </tr>
+    </thead>
+    {{/if}}
+    {{/each}}
+    <tbody class="">
+        {{#each jornales}}
+
+        <tr class="{{@key}}">
+            {{#each this}}
+            <td class="{{@key}} module">{{this}}</td>
+            {{/each}}
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

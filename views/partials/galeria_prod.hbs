@@ -1,0 +1,34 @@
+{{#if galeria_prod}}
+<div class="row">
+    {{#each galeria_prod}}
+    <div class="col-md-3 p-2 ">
+        {{!-- <div class="card bg-dark text-white">
+            <img src="/disck/{{this.id_producto}}" class="card-img" alt="...">
+            <div class="card-img-overlay ">
+                <h5 class="card-title  ">{{this.descripcion}}</h5>
+                <p class="card-text">precio: ${{this.precio}}</p>
+                <p class="card-text">cantidad:{{this.cantidad}}</p>
+            </div>
+        </div> --}}
+
+        <div class="card mb-3 shadow">
+            <a href="/disck/{{this.id_producto}}">
+            <img src="/disck/{{this.id_producto}}" class="card-img-top" alt="...">
+            </a>
+            <div class="card-body">
+                <h5 class="card-title">{{this.descripcion}}</h5>
+                <p class="card-text">Cantidad: {{this.cantidad}}</p>
+            </div>
+             <div class="card-footer">
+        <small class="text-muted">{{fromNow this.timestamp}}</small>
+
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">${{this.precio_pub}}</span>
+
+      </div>
+        </div>
+
+
+    </div>
+    {{/each}}
+</div>
+{{/if}}

@@ -1,0 +1,90 @@
+
+
+
+{{!-- tipo --}}
+{{#if user}}
+ {{#if (compara user.level '>' 0)}}
+ <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+     <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/admin">SYCARS ADMIN</a>
+ {{/if}}
+ {{#if (compara user.level '==' 0)}}
+ <header class="navbar navbar-dark sticky-top bg-primary flex-md-nowrap p-1 shadow">
+     <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/profile">SYCARS CLIENTE</a>
+ {{/if}}
+ {{else}}
+ <header class="navbar navbar-light sticky-top bg-light flex-md-nowrap p-0 shadow">
+   <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/profile">SYCARS</a>
+{{/if}}
+{{!-- colapsador --}}
+  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+    data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+{{!-- navegacion --}}
+  {{#if user}}
+  <label class="form-control form-control-dark w-100"></label>
+  {{#if (compara user.level '>' 0)}}
+  <div class="navbar-nav">
+    <div class="nav-item text-nowrap">
+      <a class="nav-link px-3" href="/">Tienda</a>
+    </div>
+  </div>
+  <div class="navbar-nav">
+    <div class="nav-item text-nowrap">
+      <a class="nav-link px-3" href="/upload">Agregar..</a>
+    </div>
+  </div>
+  {{/if}}
+  <div class="navbar-nav">
+    <div class="nav-item text-nowrap">
+      <a class="nav-link px-3" href="/">{{user.fullname}}</a>
+    </div>
+  </div>
+  <div class="navbar-nav">
+    <div class="nav-item text-nowrap">
+      <a class="nav-link px-3" href="/logout">Cerrar Sesion</a>
+    </div>
+  </div>
+  {{else}}
+  <input class="form-control form-control-dark w-100" type="text" placeholder="Buscar" aria-label="Search">
+  <div class="navbar-nav">
+    <div class="nav-item text-nowrap">
+      <a class="nav-link px-3" href="/login">Iniciar Sesion</a>
+    </div>
+  </div>
+  <div class="navbar-nav">
+    <div class="nav-item text-nowrap">
+      <a class="nav-link px-3" href="/signup">Registro</a>
+    </div>
+  </div>
+  {{/if}}
+
+
+
+
+</header>
+
+
+
+
+{{!-- <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+  <nav class="navbar navbar-expand-lg ">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">SYCARS</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Jornales</a>
+          </li>
+
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+</header> --}}

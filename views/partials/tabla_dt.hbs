@@ -1,0 +1,27 @@
+{{#if tabla_dt}}
+<div class="table-responsive">
+<table class="table table-striped table-hover table-sm">
+    {{#each tabla_dt}}
+    {{#if @first}}
+    <thead>
+        <tr>
+            {{#each this}}
+            <th>{{@key}}</th>
+            {{/each}}
+        </tr>
+    </thead>
+    {{/if}}
+    {{/each}}
+    <tbody class="">
+        {{#each tabla_dt}}
+
+        <tr class="{{@key}}">
+            {{#each this}}
+            <td class="{{@key}} module">{{this}}</td>
+            {{/each}}
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+</div>
+{{/if}}

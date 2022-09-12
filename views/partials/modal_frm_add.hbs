@@ -1,0 +1,55 @@
+{{#if modal_frm_add}}
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Nuevo Registro</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            {{!-- <div class="row bg-secundary"> --}}
+                <div class="modal-body">
+                    <div class="col-md-12 mx-auto">
+                        <div class="card text-center">
+                            {{!-- <div class="card header bg-success">
+                                <h3></h3>
+                            </div> --}}
+                            <div class="card-body">
+                                <form action="" method="POST">
+                                    <input type="hidden" name="form_type" value="frm_add">
+                                    {{#each modal_frm_add}}
+
+                                    <div class="form-floating mb-3">
+                                        <input {{{frm_isDisable 'frm_add' this.name}}} value="{{this.value}}"
+                                            type="{{frm_type_txt this.type}}" class="form-control" id="{{this.name}}"
+                                            value="{{this.value}}" name="{{this.name}}" placeholder="{{this.name}}">
+                                        <label for="{{this.name}}">{{this.name}}</label>
+                                    </div>
+
+                                    {{/each}}
+
+                                    {{!-- <button class="btn btn-success btn-block">
+                                        Crear
+                                    </button> --}}
+                                
+                                <div class="modal-footer">
+                                    <button  class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button  class="btn btn-primary">Crear</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{!--
+            </div> --}}
+        </div>
+
+    </div>
+</div>
+
+
+
+{{/if}}

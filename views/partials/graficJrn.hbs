@@ -1,0 +1,25 @@
+<canvas id="line-chart" width="800" height="450"></canvas>
+
+<script>
+
+new Chart(document.getElementById("line-chart"), {
+  type: 'line',
+  data: {
+    labels: {{{g_j_lb}}},
+    datasets: {{{g_j_data}}}
+  },
+  options: {
+    title: {
+      display: true,
+      text: 'World population per region (in millions)'
+    },
+    Plugins:{
+      leyend:{
+        position:'bottom'
+      }
+    }
+
+  }
+});
+
+</script>

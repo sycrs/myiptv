@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+
+{{!-- {{>nomina/header}} --}}
+
+<head>
+  {{!--
+  <link rel="stylesheet" id="BC_Theme-css"
+    href="https://ww1.cuevana3.me/wp-content/themes/cuevana3/public/css/peli-public.css?ver=1.4.84" type="text/css"
+    media="all"> --}}
+  <style>
+    .container_load {
+      background-color: black;
+    }
+
+    .sidebar {
+      overflow: auto;
+      padding-left: 10px;
+    }
+
+    #container_load {
+      display: none;
+    }
+
+    .card {
+      background-color: #e4e4e4;
+      margin: 2px;
+    }
+
+    .itemcat {
+      border-right: ridge;
+      border-bottom: ridge;
+      margin-bottom: 3px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-fluid " id="dta-Serv" data="">
+
+    <div class="row">
+
+      <nav id="sidebarMenu" class="col-md-2 d-md-block bg-light sidebar collapse">
+        <div class="row position-sticky p-2">
+
+          <ul class="list-group">
+            {{!-- paginacion --}}
+            {{#if paginacion}}
+            <li class="list-group-item">
+              <ul class="pagination">
+
+                {{#each paginacion.pags}}
+
+                {{#if (compara ../paginacion.pag '===' this)}}
+                <li class="page-item active" aria-current="page">
+                  <span class="page-link">{{this}}</span>
+                </li>
+                {{else}}
+                <li class="page-item"><a class="page-link"
+                    href="?ofs={{{../ofs}}}&genero={{{../genero}}}&p={{{this}}}">{{{this}}}</a></li>
+                {{/if}}
+
+                {{/each}}
+
+                <li class="page-item">
+                  <a class="page-link" href="?ofs={{{ofs}}}&genero={{{genero}}}&p={{{paginacion.pag_max}}}">
+                    Ultimo
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary ">
+                      {{{paginacion.pag_max}}}
+                      <span class="visually-hidden">msgs</span>
+                    </span>
+                  </a>
+                </li>
+
+              </ul>
+            </li>
+            {{/if}}
+            {{!-- paginacion end --}}
+
+            <li class="list-group-item">
+              <ul class="pagination">
+                <li class="page-item disabled">
+                  <a class="page-link">1X</a>
+                </li>
+                <li class="page-item {{#if (compara ofs '==' 50)}}active{{/if}}"><a class="page-link"
+                    href="?ofs=50&genero={{{genero}}}&p={{{paginacion.pag}}}">50</a></li>
+                <li class="page-item {{#if (compara ofs '==' 100)}}active{{/if}}"><a class="page-link"
+                    href="?ofs=100&genero={{{genero}}}&p={{{paginacion.pag}}}">100</a></li>
+                <li class="page-item {{#if (compara ofs '==' 500)}}active{{/if}}"><a class="page-link"
+                    href="?ofs=500&genero={{{genero}}}&p={{{paginacion.pag}}}">500</a></li>
+                <li class="page-item {{#if (compara ofs '==' 1000)}}active{{/if}}"><a class="page-link"
+                    href="?ofs=1000&genero={{{genero}}}&p={{{paginacion.pag}}}">1000</a></li>
+              </ul>
+            </li>
+
+          
+          <li class="list-group-item  ">  
+          
+          <div class="row d-flex justify-content-between p-2">
+
+            {{#if cat_0}}
+            {{#each cat_0}}
+            <div class="col-md-auto itemcat 
+                     {{#if (compara this '===' ../genero)}}
+                     bg-success bg-gradient bg-opacity-75 border border-light rounded 
+                     {{else}}text-dark bg-light {{/if}}">
+              <h6 class="link_cat">
+                <a href="?ofs={{{../ofs}}}&genero={{{this}}}">
+                  {{{this}}}
+                </a>
+              </h6>
+            </div>
+            {{/each}}
+            {{/if}}
+
+          </div>
+          
+          </li> 
+          </ul>
+
+        </div>
+      </nav>
+
+      <main class="ms-sm-auto col-lg-10 ">
+        <div class="row p-2">
+          {{#if list_movies}}
+          {{#each list_movies}}
+          <div class="card text-center col-md-2 p-1">
+            {{!-- <div class="card-header">
+             <b> {{{this.titulo}}}</b>
+              <span class="badge bg-primary">{{{this.estreno}}}</span>
+            </div> --}}
+            <a href=" ./link?id={{{this.id}}}" target="_blank">
+            <img src="" data-src="{{{this.src}}}" class="img-thumbnail lazy" alt="...">
+            </a>
+            <div class="card-body">
+              <div class="card-text">
+                {{!-- <div class="card-header"> --}}
+             <b> {{{this.titulo}}}</b>
+              <span class="badge bg-primary">{{{this.estreno}}}</span>
+            {{!-- </div> --}}
+             <b class="badge bg-secondary">⭐{{{this.calificacion}}} </b>  {{{this.descripcion}}} </br>
+                {{{this.genero}}} 
+              </div>  
+              
+              </a>
+            </div>
+            {{!-- <div class="card-footer text-muted">
+              {{{this.duracion}}}
+            </div> --}}
+          </div>
+          {{/each}}
+        </div>
+        {{/if}}
+
+      </main>
+
+    </div>
+  </div>
+  </div>
+</body>
+
+<script>
+
+  !function (window) {
+    var $q = function (q, res) {
+      if (document.querySelectorAll) {
+        res = document.querySelectorAll(q);
+      } else {
+        var d = document
+          , a = d.styleSheets[0] || d.createStyleSheet();
+        a.addRule(q, 'f:b');
+        for (var l = d.all, b = 0, c = [], f = l.length; b < f; b++)
+          l[b].currentStyle.f && c.push(l[b]);
+
+        a.removeRule(0);
+        res = c;
+      }
+      return res;
+    }
+      , addEventListener = function (evt, fn) {
+        window.addEventListener
+          ? this.addEventListener(evt, fn, false)
+          : (window.attachEvent)
+            ? this.attachEvent('on' + evt, fn)
+            : this['on' + evt] = fn;
+      }
+      , _has = function (obj, key) {
+        return Object.prototype.hasOwnProperty.call(obj, key);
+      }
+      ;
+
+    function loadImage(el, fn) {
+      var img = new Image()
+        , src = el.getAttribute('data-src');
+      img.onload = function () {
+        if (!!el.parent)
+          el.parent.replaceChild(img, el)
+        else
+          el.src = src;
+
+        fn ? fn() : null;
+      }
+      img.src = src;
+    }
+
+    function elementInViewport(el) {
+      var rect = el.getBoundingClientRect()
+
+      return (
+        rect.top >= 0
+        && rect.left >= 0
+        && rect.top <= (window.innerHeight || document.documentElement.clientHeight)
+      )
+    }
+
+    var images = new Array()
+      , query = $q('img.lazy')
+      , processScroll = function () {
+        for (var i = 0; i < images.length; i++) {
+          if (elementInViewport(images[i])) {
+            loadImage(images[i], function () {
+              images.splice(i, i);
+            });
+          }
+        };
+      }
+      ;
+    // Array.prototype.slice.call is not callable under our lovely IE8 
+    for (var i = 0; i < query.length; i++) {
+      images.push(query[i]);
+    };
+
+    processScroll();
+    addEventListener('scroll', processScroll);
+
+  }(this);
+
+
+</script>
+
+</html>

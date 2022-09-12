@@ -1,0 +1,31 @@
+{{#if data_frm_edit}}
+    <div class="row bg-secundary">
+        <div class="col-md-12 mx-auto">
+            <div class="card text-center">
+                <div class="card header bg-warning">
+                    <h3></h3>
+                </div>
+                <div class="card-body">
+                    <form action="" method="POST" name='frm_edit'>
+                         <input type="hidden" name="form_type" value="frm_edit">
+                        {{#each data_frm_edit}}
+                        {{!-- <div class="mb-3">
+                            <input type="{{frm_type_txt this.type}}" name="{{this.name}}" placeholder=""
+                                class="form-control" value="{{this.value}}">
+                        </div> --}}
+
+                        <div class="form-floating mb-3">
+                            <input type="{{frm_type_txt this.type}}" class="form-control" id="{{this.name}}"  value="{{this.value}}" name="{{this.name}}" placeholder="{{this.name}}">
+                            <label for="{{this.name}}">{{this.name}}</label>
+                        </div>
+
+                        {{/each}}
+                        <button class="btn btn-warning btn-block">
+                            Actualizar
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{{/if}}

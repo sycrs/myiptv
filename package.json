@@ -1,0 +1,25 @@
+{
+  "name": "iptv",
+  "version": "1.0.0",
+  "description": "tv online",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sycrs/iptv.git"
+  },
+  "keywords": [
+    "ok"
+  ],
+  "author": "pablo carse",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sycrs/iptv/issues"
+  },
+  "homepage": "https://github.com/sycrs/iptv#readme"
+}
