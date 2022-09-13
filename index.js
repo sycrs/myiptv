@@ -71,13 +71,7 @@ app.use((req,res,next)=>{
 })
 
 //routes
-// app.use(require('./routes'));
 app.use(require('./routes/autentication'));
-// app.use('/jornales',require('./routes/jornales'));
-// app.use(require('./routes/store'));
-// app.use('/remoto',require('./routes/nomina_remoto'));
-// app.use('/movil',require('./routes/movil/'));
-
 app.use('/iptvlist',require('./routes/tv/'));
 
 //static
@@ -102,6 +96,3 @@ server.on('upgrade', function upgrade(request, socket, head) {
   
   });
 });
-
- 
-

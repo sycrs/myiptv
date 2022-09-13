@@ -17,6 +17,7 @@ const conn = require('../../db_custom')({
 })
 
 const fcn_ = require('../tv/fcn_');
+const ip = require('ip');
 
 router.get('/stream', async (req, res) => {
     
@@ -44,6 +45,10 @@ router.get('/stream', async (req, res) => {
 	let paginacion = fcn_.f.paginacion(p, list0.rows.length,ofs); // console.log(paginacion);
 	res.render('movies/index', { cat_0, list_movies, genero, paginacion ,ofs });
 
+});
+
+router.get('/ip',async()=>{
+   res.send(ip.address());
 });
 
 router.get('/', async (req, res) => {
