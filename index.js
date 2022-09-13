@@ -51,24 +51,24 @@ app.engine('.hbs',hbsexprss({
 app.set(morgan('dev'));
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
-app.use(session({
-  key:'cookie_app',
-  secret:'1068fe216695',
-  store: sessionStore,
-  resave:false,
-  saveUninitialized:false,
-}));
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(session({
+//   key:'cookie_app',
+//   secret:'1068fe216695',
+//   store: sessionStore,
+//   resave:false,
+//   saveUninitialized:false,
+// }));
+// app.use(passport.initialize());
+// app.use(passport.session());
 app.use(flash());
 //app.use(fileUpload());
 
-app.use((req,res,next)=>{
-   app.locals.success = req.flash('success');
-   app.locals.warning = req.flash('warning');
-   app.locals.user = req.user;
-    next();
-})
+// app.use((req,res,next)=>{
+//    app.locals.success = req.flash('success');
+//    app.locals.warning = req.flash('warning');
+//    app.locals.user = req.user;
+//     next();
+// })
 
 //routes
 app.use(require('./routes/autentication'));

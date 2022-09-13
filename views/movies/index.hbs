@@ -50,7 +50,6 @@
               <ul class="pagination">
 
                 {{#each paginacion.pags}}
-
                 {{#if (compara ../paginacion.pag '===' this)}}
                 <li class="page-item active" aria-current="page">
                   <span class="page-link">{{this}}</span>
@@ -59,7 +58,6 @@
                 <li class="page-item"><a class="page-link"
                     href="?ofs={{{../ofs}}}&genero={{{../genero}}}&p={{{this}}}">{{{this}}}</a></li>
                 {{/if}}
-
                 {{/each}}
 
                 <li class="page-item">
@@ -79,43 +77,41 @@
 
             <li class="list-group-item">
               <ul class="pagination">
-                <li class="page-item disabled">
-                  <a class="page-link">1X</a>
+                <li class="page-item disabled"> <a class="page-link">1X</a> </li>
+
+                {{#each rango_pags}}
+                <li class="page-item {{#if (compara ../ofs '==' this)}}active{{/if}}"><a class="page-link"
+                    href="?ofs={{this}}&genero={{{../genero}}}&p={{{../paginacion.pag}}}">{{this}}</a>
                 </li>
-                <li class="page-item {{#if (compara ofs '==' 50)}}active{{/if}}"><a class="page-link"
-                    href="?ofs=50&genero={{{genero}}}&p={{{paginacion.pag}}}">50</a></li>
-                <li class="page-item {{#if (compara ofs '==' 100)}}active{{/if}}"><a class="page-link"
-                    href="?ofs=100&genero={{{genero}}}&p={{{paginacion.pag}}}">100</a></li>
-                <li class="page-item {{#if (compara ofs '==' 500)}}active{{/if}}"><a class="page-link"
-                    href="?ofs=500&genero={{{genero}}}&p={{{paginacion.pag}}}">500</a></li>
-                <li class="page-item {{#if (compara ofs '==' 1000)}}active{{/if}}"><a class="page-link"
-                    href="?ofs=1000&genero={{{genero}}}&p={{{paginacion.pag}}}">1000</a></li>
+                {{/each}}
+
               </ul>
             </li>
 
-          
-          <li class="list-group-item  ">  
-          
-          <div class="row d-flex justify-content-between p-2">
 
-            {{#if cat_0}}
-            {{#each cat_0}}
-            <div class="col-md-auto itemcat 
-                     {{#if (compara this '===' ../genero)}}
+            <li class="list-group-item  ">
+
+              <div class="row d-flex justify-content-between p-2">
+
+                {{#if cat_0}}
+                {{#each cat_0}}
+                <button type="button" class="btn btn-outline-success col-md-auto itemcat
+            {{#if (compara this '===' ../genero)}}
                      bg-success bg-gradient bg-opacity-75 border border-light rounded 
                      {{else}}text-dark bg-light {{/if}}">
-              <h6 class="link_cat">
-                <a href="?ofs={{{../ofs}}}&genero={{{this}}}">
-                  {{{this}}}
-                </a>
-              </h6>
-            </div>
-            {{/each}}
-            {{/if}}
 
-          </div>
-          
-          </li> 
+                  <a href="?ofs={{{../ofs}}}&genero={{{this}}}">
+                    {{{this}}}
+                  </a>
+
+                </button>
+
+                {{/each}}
+                {{/if}}
+
+              </div>
+
+            </li>
           </ul>
 
         </div>
@@ -127,22 +123,23 @@
           {{#each list_movies}}
           <div class="card text-center col-md-2 p-1">
             {{!-- <div class="card-header">
-             <b> {{{this.titulo}}}</b>
+              <b> {{{this.titulo}}}</b>
               <span class="badge bg-primary">{{{this.estreno}}}</span>
             </div> --}}
             <a href=" ./link?id={{{this.id}}}" target="_blank">
-            <img src="" data-src="{{{this.src}}}" class="img-thumbnail lazy" alt="...">
+              <img src="" data-src="{{{this.src}}}" class="img-thumbnail lazy" alt="...">
             </a>
             <div class="card-body">
               <div class="card-text">
                 {{!-- <div class="card-header"> --}}
-             <b> {{{this.titulo}}}</b>
-              <span class="badge bg-primary">{{{this.estreno}}}</span>
-            {{!-- </div> --}}
-             <b class="badge bg-secondary">⭐{{{this.calificacion}}} </b>  {{{this.descripcion}}} </br>
-                {{{this.genero}}} 
-              </div>  
-              
+                  <b> {{{this.titulo}}}</b>
+                  <span class="badge bg-primary">{{{this.estreno}}}</span>
+                  {{!--
+                </div> --}}
+                <b class="badge bg-secondary">⭐{{{this.calificacion}}} </b> {{{this.descripcion}}} </br>
+                {{{this.genero}}}
+              </div>
+
               </a>
             </div>
             {{!-- <div class="card-footer text-muted">

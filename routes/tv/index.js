@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 // const moment = require('moment');
 const fcn = require('../../lib/functions');
+const cfg=require('./config');
 
 const browserObject = require('../../x_scraping/browser');
 const scrap = require('../../x_scraping/cuevana/pageScraper');
@@ -20,10 +21,11 @@ const fcn_ = require('../tv/fcn_');
 const ip = require('ip');
 
 router.get('/stream', async (req, res) => {
-    
+    // console.log('en web');
 	let list_movies = undefined;
     let { p, genero,ofs} = req.query;
 	ofs==undefined?ofs=50:null;
+	let {rango_pags}=cfg;
 
 	let categorias = await conn.queryFull(`SELECT l.genero FROM links l  GROUP BY l.genero`);
 	let cat_0 = fcn_.f.categorias(categorias.rows);
@@ -43,7 +45,7 @@ router.get('/stream', async (req, res) => {
 
 	// console.log(cat_0);
 	let paginacion = fcn_.f.paginacion(p, list0.rows.length,ofs); // console.log(paginacion);
-	res.render('movies/index', { cat_0, list_movies, genero, paginacion ,ofs });
+	res.render('movies/index', { cat_0, list_movies, genero, paginacion ,ofs ,rango_pags});
 
 });
 
@@ -54,8 +56,8 @@ router.get('/ip',async()=>{
 router.get('/', async (req, res) => {
 	let list = `#EXTM3U x-tvg-url="http://sycrs.ddns.net:3000/iptvlist\n";
     `;
-	let host = `http://192.168.0.4:3000/iptvlist/`;
-	// let host = `http://172.16.2.31:3000/iptvlist/`;
+	// let host = `http://192.168.0.4:3000/iptvlist/`;
+	let host = `${cfg.host}/iptvlist/`;
 	let stmt = ['', 2];
 
 	if (req.query.hasOwnProperty('g') && req.query.hasOwnProperty('e')) {
