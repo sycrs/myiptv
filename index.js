@@ -48,9 +48,9 @@ app.engine('.hbs',hbsexprss({
  app.set('view engine','.hbs');
 
  //midlewares
-app.set(morgan('dev'));
-app.use(express.urlencoded({extended:false}));
-app.use(express.json());
+// app.set(morgan('dev'));
+// app.use(express.urlencoded({extended:false}));
+// app.use(express.json());
 // app.use(session({
 //   key:'cookie_app',
 //   secret:'1068fe216695',
@@ -60,8 +60,8 @@ app.use(express.json());
 // }));
 // app.use(passport.initialize());
 // app.use(passport.session());
+
 app.use(flash());
-//app.use(fileUpload());
 
 // app.use((req,res,next)=>{
 //    app.locals.success = req.flash('success');

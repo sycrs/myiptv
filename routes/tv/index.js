@@ -10,12 +10,8 @@ const scrap = require('../../x_scraping/cuevana/pageScraper');
 const Axios = require('Axios');
 
 let mysql = require('mysql');
-const conn = require('../../db_custom')({
-	host: 'localhost',
-	user: 'root',
-	password: '',
-	database: 'iptv'
-})
+const conn = require('../../db_custom')(cfg.database);
+
 
 const fcn_ = require('../tv/fcn_');
 const ip = require('ip');
